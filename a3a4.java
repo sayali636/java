@@ -1,34 +1,47 @@
-import java.util.Scanner;
+//Define a class Student with attributes rollno and name. Define default and parameterized 
+//constructor. Override the toString() method. Keep the count of Objects created. Create 
+//objects using parameterized constructor and Display the object count after each object is 
+//created.
 
-class Book {
-    int bid, qty;
-    String bname;
+class Student 
+{
+    int rollno;
+    String name;
+    static int count = 0;  
+   
+    Student()
+   {
+        rollno = 0;
+        name = "Unknown";
+        count++;
+    }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of books: ");
-        int n = sc.nextInt();
-        Book arr[] = new Book[n];
+    Student(int r, String n)
+   {
+        rollno = r;
+        name = n;
+        count++;
+        System.out.println("Object Count: " + count);
+    }
 
-        for (int i = 0; i < n; i++) {
-            arr[i] = new Book();
-            System.out.println("Enter bid, bname, qty:");
-            arr[i].bid = sc.nextInt();
-            arr[i].bname = sc.next();
-            arr[i].qty = sc.nextInt();
-        }
-
-        System.out.print("Enter book name to search: ");
-        String search = sc.next();
-        boolean found = false;
-
-        for (Book b : arr) {
-            if (b.bname.equalsIgnoreCase(search)) {
-                System.out.println("Quantity of " + b.bname + " = " + b.qty);
-                found = true;
-            }
-        }
-        if (!found)
-            System.out.println("Book not found!");
+    public String toString() 
+   {
+        return "Roll No: " + rollno + ", Name: " + name;
     }
 }
+
+public class StudentTest 
+{
+    public static void main(String[] args)
+     {
+        Student s1 = new Student(101, "neha");
+        System.out.println(s1);
+
+        Student s2 = new Student(102, "tanuja");
+        System.out.println(s2);
+
+        Student s3 = new Student(103, "sayali");
+        System.out.println(s3);
+    }
+}
+  

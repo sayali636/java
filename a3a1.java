@@ -1,44 +1,42 @@
-import java.util.Scanner;
+//Write a java program to calculate area of Cylinder and Circle.(Use super keyword)
 
-class Student {
-    int rno, mark1, mark2;
-    String name;
-
-    // Inner Class
-    class Result {
-        int total;
-        double percentage;
-
-        Result() {
-            total = mark1 + mark2;
-            percentage = total / 2.0;
-        }
-
-        void display() {
-            System.out.println("Rno: " + rno);
-            System.out.println("Name: " + name);
-            System.out.println("Mark1: " + mark1);
-            System.out.println("Mark2: " + mark2);
-            System.out.println("Total: " + total);
-            System.out.println("Percentage: " + percentage);
-        }
+class Circle
+ {
+    double radius;
+    Circle(double r) 
+     {
+        radius = r;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter rno, name, mark1, mark2:");
-        int r = sc.nextInt();
-        String nm = sc.next();
-        int m1 = sc.nextInt();
-        int m2 = sc.nextInt();
+    double area() 
+    {
+        return Math.PI * radius * radius;
+    }
+ }
 
-        Student s = new Student();
-        s.rno = r;
-        s.name = nm;
-        s.mark1 = m1;
-        s.mark2 = m2;
+class Cylinder extends Circle 
+  {
+    double height;
+    Cylinder(double r, double h) 
+     {
+        super(r); 
+        height = h;
+    }
 
-        Student.Result res = s.new Result();
-        res.display();
+    double area() 
+  {
+        return (2 * super.area()) + (2 * Math.PI * radius * height);
+    }
+}
+
+public class AreaCalculation 
+{
+    public static void main(String[] args)
+    {
+        Circle c = new Circle(5);
+        System.out.println("Area of Circle: " + c.area());
+
+        Cylinder cyl = new Cylinder(5, 10);
+        System.out.println("Surface Area of Cylinder: " + cyl.area());
     }
 }

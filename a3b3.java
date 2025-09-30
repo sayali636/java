@@ -1,27 +1,32 @@
+//Construct a Linked List containg name: CPP, Java, Python and PHP. Then extendyour 
+//program to do the following: 
+//i. Display the contents of the List using an iterator 
+//ii.Display the contents of the List in reverse order using a ListIterator. 
+
 import java.util.*;
 
-public class LinkedListDemo
+class Main
  {
     public static void main(String[] args)
-    {
-        LinkedList list = new LinkedList();
-        list.add("CPP");
-        list.add("Java");
-        list.add("Python");
-        list.add("PHP");
+ {
+        LinkedList languages = new LinkedList();  
+        languages.add("CPP");
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("PHP");
 
-        System.out.println("Using Iterator:");
-        Iterator it = list.iterator();
-        while (it.hasNext())
-        {
-            System.out.println(it.next());
+        System.out.println("LinkedList contents:");
+        Enumeration e = Collections.enumeration(languages);
+        while (e.hasMoreElements()) 
+         {
+            System.out.println(e.nextElement());
         }
 
-        System.out.println("\nUsing ListIterator in Reverse:");
-        ListIterator<String> lit = list.listIterator(list.size());
-        while (lit.hasPrevious())
-        {
-            System.out.println(lit.previous());
+
+        System.out.println("\nLinkedList in reverse:");
+        for (int i = languages.size() - 1; i >= 0; i--) 
+         {
+            System.out.println(languages.get(i));
         }
     }
 }

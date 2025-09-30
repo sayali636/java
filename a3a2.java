@@ -1,24 +1,51 @@
-import java.util.*;
+//Define an Interface Shape with abstract method area(). Write a java program to calculate 
+//an area of Circle and Sphere.(use final keyword) 
 
-class Employee {
-    static String names[];
+interface Shape 
+{
+    double area();
+}
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of employees: ");
-        int n = sc.nextInt();
-        names = new String[n];
+class Circle implements Shape 
+{
+    final double PI = 3.14; 
+    double radius;
 
-        System.out.println("Enter names:");
-        for (int i = 0; i < n; i++) {
-            names[i] = sc.next();
-        }
+    Circle(double r) 
+    {
+        radius = r;
+    }
 
-        Arrays.sort(names);
+    public double area()
+    {
+        return PI * radius * radius;
+    }
+}
 
-        System.out.println("\n--- Sorted Employee Names ---");
-        for (String nm : names) {
-            System.out.println(nm);
-        }
+class Sphere implements Shape 
+{
+    final double PI = 3.14; 
+    double radius;
+
+    Sphere(double r) 
+    {
+        radius = r;
+    }
+
+    public double area() 
+   {
+        return 4 * PI * radius * radius;
+    }
+}
+
+ class ShapeArea 
+{
+    public static void main(String[] args) 
+   {
+        Circle c = new Circle(5);
+        System.out.println("Area of Circle: " + c.area());
+
+        Sphere s = new Sphere(5);
+        System.out.println("Surface Area of Sphere: " + s.area());
     }
 }

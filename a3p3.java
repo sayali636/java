@@ -1,5 +1,8 @@
-import java.util.*;
+//Create a class Doctor(Dno, Dname, Qualification, Specialization). Write a Java program 
+//to accept the details of ‘n’ doctors and display the details of doctor in ascending order by 
+//doctor name. 
 
+import java.util.*;
 class Doctor
  {
     int Dno;
@@ -25,7 +28,8 @@ class Doctor
         Arrays.sort(arr, (a, b) -> a.Dname.compareToIgnoreCase(b.Dname));
 
         System.out.println("\n--- Doctors in Ascending Order ---");
-        for (Doctor d : arr) {
+        for (Doctor d : arr) 
+         {
             System.out.println(d.Dno + " " + d.Dname + " " + d.Quali+ " " + d.Specialization);
         }
     }

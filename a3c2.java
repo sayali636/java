@@ -1,24 +1,44 @@
-interface Shape {
-    double area();
-}
+//Construct a Linked List containing name: red, blue, yellow and orange. Then extend
+ //your program to do the following: 
+//Display the contents of the List using an iterator 
+//Display the contents of the List in reverse order using a ListIterator. 
+//Create another list containing pink & green. Insert the elements of this list between blue  & yellow.
 
-class Circle implements Shape {
-    final double r;   // final variable
-    Circle(double r) { this.r = r; }
-    public double area() { return Math.PI * r * r; }
-}
+import java.util.*;
+class Main 
+{
+    public static void main(String[] args) 
+{
+        LinkedList colors = new LinkedList();
+        colors.add("red");
+        colors.add("blue");
+        colors.add("yellow");
+        colors.add("orange");
 
-class Sphere implements Shape {
-    final double r;
-    Sphere(double r) { this.r = r; }
-    public double area() { return 4 * Math.PI * r * r; }
-}
+        System.out.println("Original LinkedList:");
+        Iterator it = colors.iterator();
+        while (it.hasNext())
+        {
+            System.out.println(it.next());
+        }
+        System.out.println("\n LinkedList in reverse:");
+        ListIterator lit = colors.listIterator(colors.size());
+        while (lit.hasPrevious()) 
+       {
+            System.out.println(lit.previous());
+        }
 
-class Main2 {
-    public static void main(String[] args) {
-        Shape c = new Circle(5);
-        Shape s = new Sphere(5);
-        System.out.println("Circle Area = " + c.area());
-        System.out.println("Sphere Area = " + s.area());
+        LinkedList newColors = new LinkedList();
+        newColors.add("pink");
+        newColors.add("green");
+
+           int index = colors.indexOf("yellow"); 
+        colors.addAll(index, newColors); 
+         System.out.println("\n  pink & green:");
+        for (int i = 0; i < colors.size(); i++) 
+       {
+            System.out.println(colors.get(i));
+        }
     }
 }
+ 

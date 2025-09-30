@@ -1,29 +1,51 @@
+// Create a hashtable containing employee name & salary. Display the details of the 
+//hashtable. Also search for a specific Employee and display salary of that employee.
+ 
 import java.util.*;
-
-public class HashTableDemo
+ class Main
  {
-    public static void main(String[] args)
-    {
-        Hashtable ht = new Hashtable();
-        ht.put("sayali", 30000);
-        ht.put("tanuja", 25000);
-        ht.put("pratiksha", 40000);
+    public static void main(String[] args) 
+{
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Employee Details:");
-        for (Map.Entry<String, Integer> e : ht.entrySet()) {
-            System.out.println(e.getKey() + " => " + e.getValue());
+           Hashtable employees = new Hashtable();
+
+        System.out.print("Enter number of employees: ");
+        int n = sc.nextInt();
+        sc.nextLine(); 
+
+        for (int i = 0; i < n; i++) 
+{
+            System.out.print("Enter employee name: ");
+            String name = sc.nextLine();
+            System.out.print("Enter salary: ");
+            double salary = sc.nextDouble();
+            sc.nextLine(); 
+
+            employees.put(name, new Double(salary));
         }
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter employee name to search: ");
-        String name = sc.next();
-
-        if (ht.containsKey(name))
-       {
-            System.out.println(name + "'s Salary: " + ht.get(name));
-        } else
+        System.out.println("\nEmployee Details:");
+        Enumeration keys = employees.keys();
+        while (keys.hasMoreElements()) 
         {
-            System.out.println("Employee not found!");
+            String name = (String) keys.nextElement();
+            double salary = ((Double) employees.get(name)).doubleValue();
+            System.out.println("Name: " + name + ", Salary: " + salary);
+        }
+
+       
+        System.out.print("\n name to search: ");
+        String searchName = sc.nextLine();
+
+        if (employees.containsKey(searchName))
+       {
+            double salary = ((Double) employees.get(searchName)).doubleValue();
+            System.out.println("Salary of " + searchName + " = " + salary);
+        } 
+       else 
+        {
+            System.out.println(searchName + " not found!");
         }
     }
 }
